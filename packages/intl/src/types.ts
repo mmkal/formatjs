@@ -87,7 +87,7 @@ export type FormatDisplayNameOptions = Exclude<
   'localeMatcher'
 >;
 
-export interface IntlFormatters<T = any, R = T> {
+export interface IntlFormatters<T = any, R = T, Id extends string | number = string | number> {
   formatDateTimeRange(
     from: Parameters<DateTimeFormat['formatRange']>[0],
     to: Parameters<DateTimeFormat['formatRange']>[1],
@@ -127,12 +127,12 @@ export interface IntlFormatters<T = any, R = T> {
     opts?: FormatPluralOptions
   ): ReturnType<Intl.PluralRules['select']>;
   formatMessage(
-    descriptor: MessageDescriptor,
+    descriptor: MessageDescriptor<Id>,
     values?: Record<string, PrimitiveType | FormatXMLElementFn<string, string>>,
     opts?: IntlMessageFormatOptions
   ): string;
   formatMessage(
-    descriptor: MessageDescriptor,
+    descriptor: MessageDescriptor<Id>,
     values?: Record<string, PrimitiveType | T | FormatXMLElementFn<T, R>>,
     opts?: IntlMessageFormatOptions
   ): R;
