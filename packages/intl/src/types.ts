@@ -185,8 +185,8 @@ export interface IntlCache {
   displayNames: Record<string, DisplayNames>;
 }
 
-export interface MessageDescriptor {
-  id?: string | number;
+export interface MessageDescriptor<Id extends string | number = string | number> {
+  id?: Id;
   description?: string | object;
   defaultMessage?: string | MessageFormatElement[];
 }
